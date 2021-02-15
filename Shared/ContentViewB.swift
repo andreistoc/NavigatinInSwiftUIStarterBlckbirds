@@ -6,10 +6,17 @@
 import SwiftUI
 
 struct ContentViewB: View {
+    
+    @EnvironmentObject var viewRouter: ViewRouter
+    
     var body: some View {
         VStack {
             HappyDog()
-            Button(action: {print("Navigate to past view")}) {
+            Button(action: {
+                withAnimation {
+                viewRouter.currentPage = .page1
+                }
+            }) {
                 BackButtonContent()
             }
         }
@@ -18,7 +25,7 @@ struct ContentViewB: View {
 
 struct ContentViewB_Previews: PreviewProvider {
     static var previews: some View {
-        ContentViewB()
+        ContentViewB().environmentObject(ViewRouter())
     }
 }
 

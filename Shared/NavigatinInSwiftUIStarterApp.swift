@@ -7,9 +7,12 @@ import SwiftUI
 
 @main
 struct NavigatinInSwiftUIStarterApp: App {
+    
+    @StateObject var viewRouter = ViewRouter()
+    
     var body: some Scene {
         WindowGroup {
-            ContentViewA()
+            MotherView().environmentObject(viewRouter)
         }
     }
 }
